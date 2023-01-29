@@ -19,4 +19,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/Lunaar-SMP/python3.11-zulu17:latest
+            ghcr.io/lunaar-smp/python3.11-zulu17:latest
