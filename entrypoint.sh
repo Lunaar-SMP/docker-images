@@ -33,9 +33,17 @@ export INTERNAL_IP
 # Switch to the container's working directory
 cd /home/container || exit 1
 
+# Installs or Update python libraries
+pip install -r requirements.txt --upgrade
+
+# Inits mcdr in container home directory
+python -m mcdreforged init
+
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version
+python --version
+pip --version
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
