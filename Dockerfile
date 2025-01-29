@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM    python:3.12-slim-bullseye
+FROM    python:slim-bookworm
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ARG ZULU_REPO_VER=1.0.0-3
@@ -35,8 +35,8 @@ RUN apt-get -qq update && \
     echo "${ZULU_REPO_SHA256} zulu-repo_${ZULU_REPO_VER}_all.deb" | sha256sum --strict --check - && \
     dpkg -i zulu-repo_${ZULU_REPO_VER}_all.deb && \
     apt-get -qq update && \
-    echo "Package: zulu17-*\nPin: version 17.0.10-*\nPin-Priority: 1001" > /etc/apt/preferences && \
-    apt-get -qq -y --no-install-recommends install zulu17-jdk=17.0.10-* && \
+    echo "Package: zulu17-*\nPin: version 17.0.14-*\nPin-Priority: 1001" > /etc/apt/preferences && \
+    apt-get -qq -y --no-install-recommends install zulu17-jdk=17.0.14-* && \
     apt-get -qq -y purge --auto-remove gnupg software-properties-common curl && \
     rm -rf /var/lib/apt/lists/* zulu-repo_${ZULU_REPO_VER}_all.deb
 
